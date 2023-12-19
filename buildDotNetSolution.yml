@@ -1,21 +1,6 @@
 # Use Azure Pipelines to build your .NET Core projects. 
 
 parameters:
-- name: projects
-  type: string
-  default: '**\*.sln'
- 
-- name: buildConfiguration
-  type: string
-  default: 'Release'
-
-- name: dotNetTestArguements
-  type: string
-  default: '--configuration $(BuildConfiguration)'
-
-- name: workingDirectory
-  type: string
-  default: ''
 
 - name: solution
   type: string
@@ -32,6 +17,10 @@ parameters:
 - name: platform
   type: string
   default: 'Any CPU'
+
+- name: buildConfiguration
+  type: string
+  default: 'Release'
  
 - name: clean
   type: boolean
