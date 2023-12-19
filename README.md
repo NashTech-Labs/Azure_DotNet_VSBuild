@@ -1,9 +1,6 @@
 # Azure_DotNet_VSBuild
 Use this task to build with MSBuild and set the Visual Studio version property. This task is only supported on agents running Windows.
 
-# Azure_GenerateBuildSuffix_UpdateBuildNumber
-This template enables to generate a build suffix for the package version and to update the build number
-
 ## Pipeline Requirements
 
 The dotNet Module pipeline requires the following parameters to be defined:
