@@ -1,0 +1,95 @@
+# Use Azure Pipelines to build your .NET Core projects. 
+
+parameters:
+- name: projects
+  type: string
+  default: '**\*.sln'
+ 
+- name: buildConfiguration
+  type: string
+  default: 'Release'
+
+- name: dotNetTestArguements
+  type: string
+  default: '--configuration $(BuildConfiguration)'
+
+- name: workingDirectory
+  type: string
+  default: ''
+
+- name: useVSBuild
+  type: boolean
+  default: false
+
+- name: solution
+  type: string
+  default: '**\*.sln'
+
+- name: vsVersion
+  type: string
+  default: 'latest'
+
+- name: msbuildArgs
+  type: string
+  default: ''
+
+- name: platform
+  type: string
+  default: 'Any CPU'
+ 
+- name: clean
+  type: boolean
+  default: false
+
+- name: maximumCpuCount
+  type: boolean
+  default: false
+
+- name: restoreNugetPackages
+  type: boolean
+  default: false
+
+- name: msbuildArchitecture
+  type: string
+  default: 'x64'
+
+- name: logProjectEvents
+  type: boolean
+  default: true
+
+- name: createLogFile
+  type: boolean
+  default: false
+
+- name: logFileVerbosity
+  type: string
+  default: 'normal'
+
+- name: enableDefaultLogger
+  type: boolean
+  default: true
+
+- name: customVersion
+  type: string
+  default: ''
+
+steps: 
+  # Visual Studio build v1
+  # Build with MSBuild and set the Visual Studio version property.
+  - task: VSBuild@1
+    displayName: 'dotnet build using visual studio'
+    inputs:
+      solution: '${{ parameters.solution }}' 
+      vsVersion: '${{ parameters.vsVersion }}' 
+      msbuildArgs: '${{ parameters.msbuildArgs }}'
+      platform: '${{ parameters.platform }}' 
+      configuration: '${{ parameters.buildConfiguration }}' 
+      clean: '${{ parameters.clean }}' 
+      maximumCpuCount: '${{ parameters.maximumCpuCount }}' 
+      restoreNugetPackages: '${{ parameters.restoreNugetPackages }}' 
+      msbuildArchitecture: '${{ parameters.msbuildArchitecture }}' 
+      logProjectEvents: '${{ parameters.logProjectEvents }}' 
+      createLogFile: '${{ parameters.createLogFile }}'
+      logFileVerbosity: '${{ parameters.logFileVerbosity }}' 
+      enableDefaultLogger: '${{ parameters.enableDefaultLogger }}' 
+      customVersion: '${{ parameters.customVersion }}'
