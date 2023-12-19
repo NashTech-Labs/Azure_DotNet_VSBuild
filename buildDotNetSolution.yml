@@ -17,10 +17,6 @@ parameters:
   type: string
   default: ''
 
-- name: useVSBuild
-  type: boolean
-  default: false
-
 - name: solution
   type: string
   default: '**\*.sln'
